@@ -827,6 +827,97 @@ textarea.form-input {
   line-height: 1.5;
 }
 
+/* ── SIZE GUIDE ── */
+.size-guide-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent);
+  border: none;
+  border-radius: 6px;
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
+  transition: all .15s;
+  letter-spacing: -.3px;
+}
+.size-guide-toggle:hover { background: var(--warn); }
+.size-guide-panel {
+  display: none;
+  margin-top: 8px;
+  background: var(--bg2);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--fg2);
+}
+.size-guide-panel.open { display: block; }
+.size-guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+.size-guide-table th {
+  background: var(--soft);
+  color: var(--fg);
+  font-weight: 700;
+  padding: 4px 6px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.size-guide-table td {
+  padding: 3px 6px;
+  text-align: center;
+  border: 1px solid var(--border);
+  color: var(--fg2);
+}
+.size-guide-model {
+  font-size: 10.5px;
+  color: var(--fg3);
+  margin-top: 4px;
+}
+
+/* ── NOTICE SECTION ── */
+.notice-section {
+  margin: 24px 0 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.notice-header {
+  background: var(--bg2);
+  padding: 14px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--fg);
+  user-select: none;
+}
+.notice-header .chevron { transition: transform .2s; font-size: 12px; }
+.notice-header.open .chevron { transform: rotate(180deg); }
+.notice-body {
+  display: none;
+  padding: 16px;
+  background: var(--card);
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--fg2);
+  white-space: pre-wrap;
+}
+.notice-body.open { display: block; }
+.notice-body strong { color: var(--warn); }
+.notice-body em { color: var(--fg); font-style: normal; font-weight: 600; }
+
 /* ── COMPLETE ── */
 .complete-wrap {
   display: none;
@@ -1251,7 +1342,7 @@ textarea.form-input {
     <span class="hero-badge">⏰ 한정 공구</span>
     <h1>하주맘✕고유 25 F/W 아동복<br><em>특가 공구</em></h1>
     <p class="hero-desc">무료배송 × 5,000원 페이백<br>하주맘이 직접 고른 고유 겨울 아동복 21종</p>
-    <p class="hero-subdesc">이 외 찾으시는 고유 제품 문의는 카카오톡 주세요<br>똑같이 페이백 적용해드릴 수 있습니다 😊<br><a href="https://open.kakao.com/o/s85dtRKi" target="_blank" class="hero-kakao-link">💬 카카오 오픈채팅 바로가기</a></p>
+    <p class="hero-subdesc">이 외 찾으시는 고유 제품 문의는 카카오톡 주세요<br>똑같이 페이백 적용해드릴 수 있습니다 😊<br><a href="https://open.kakao.com/o/gP4zuHUi" target="_blank" class="hero-kakao-link">💬 카카오 오픈채팅 바로가기</a></p>
     <div class="benefit-row">
       <div class="benefit-chip"><span class="icon">🚚</span> 무료배송</div>
       <div class="benefit-chip"><span class="icon">💰</span> 5,000원 페이백</div>
@@ -1269,6 +1360,48 @@ textarea.form-input {
     <div class="category-bar" id="cat-bar"></div>
     <p class="section-title">전체 상품 <span id="product-count" style="color:var(--accent)"></span></p>
     <div class="products-grid" id="products-grid"></div>
+
+    <!-- NOTICE SECTION -->
+    <div class="notice-section" style="margin-bottom:32px;">
+      <div class="notice-header" onclick="toggleNotice(this)" id="notice-order">
+        <span>📋 주문 전 공지사항 (필독)</span><span class="chevron">▼</span>
+      </div>
+      <div class="notice-body">
+<em>구매 전, 공지사항 꼭 숙지 부탁드립니다!</em>
+공지사항 미숙지로 인한 문제가 발생 시 책임지지 않습니다.
+
+<strong>📦 배송 안내</strong>
+• 기본 배송일: 주문일 제외 평일 기준 최대 <em>7일</em> 소요
+• 리오더(재생산) 시: 주문일 제외 + <em>3주(평일 기준)</em> 소요
+• 상품에 따라 리오더 기간이 조금 더 소요될 수 있어요
+
+<strong>📌 결제/취소/변경 안내</strong>
+고객님의 결제 이후 주문건당 거래처로 발주가 이루어지는 <em>1:1 오더 시스템</em>입니다.
+결제 완료 이후 취소·교환·변경·환불·입고품 선배송은 쇼핑몰 담당자에게 문의해주세요.
+      </div>
+
+      <div class="notice-header" onclick="toggleNotice(this)" id="notice-refund">
+        <span>🔄 교환 및 환불 안내</span><span class="chevron">▼</span>
+      </div>
+      <div class="notice-body">
+<strong>❌ 교환/취소 불가 사항</strong>
+• 상품에 따라 배송지연이 생길 수 있으며, 사전 공지된 경우 배송지연에 의한 취소/교환 불가
+• 단순 변심으로 인한 교환/취소 불가
+• 착용에 문제없는 미세 실밥, 미세 이염, 나염/프린팅 무늬의 불연속성으로 인한 교환/취소 불가
+
+<strong>✅ 교환 가능 사항</strong>
+• 사이즈 교환: <em>왕복 배송비 부담 시 1회</em> 요청 가능
+
+<strong>⚠️ 불량/오배송</strong>
+• 수령 후 <em>24시간 이내</em> 구매처로 사진과 함께 접수 필수
+• 세탁 및 착용 흔이 남을 경우 교환/환불 불가
+
+<strong>🧺 세탁 안내</strong>
+• 단독세탁 &amp; 손세탁 권장
+• 색상 있는 상품은 세탁 방법에 따라 물빠짐 발생 가능 (불량 사유 아님)
+• <em>건조기 사용 비권장</em> — 건조기로 인한 줄어듦은 불량 사유로 보기 어려워요
+      </div>
+    </div>
   </div>
 
   <!-- ORDER FORM VIEW -->
@@ -1411,6 +1544,42 @@ textarea.form-input {
 <script>
 /* ─── DATA ─── */
 const D = id => `https://drive.google.com/thumbnail?id=${id}&sz=w800`;
+
+/* 고유 공통 사이즈 기준표 (XS~JL) */
+const SIZE_GUIDE_DEFAULT = {
+  rows: [
+    { size: 'XS', age: '2-3세', height: '85-92cm', weight: '약 12-14kg' },
+    { size: 'S',  age: '3-4세', height: '92-100cm', weight: '약 14-16kg' },
+    { size: 'M',  age: '4-5세', height: '100-108cm', weight: '약 16-18kg' },
+    { size: 'L',  age: '5-6세', height: '108-116cm', weight: '약 18-20kg' },
+    { size: 'JL', age: '10-11세', height: '140-150cm', weight: '약 35-42kg' },
+  ],
+  models: '모델: 크리스(102cm/16kg/S착용), 나율이(98cm/14kg/S착용)'
+};
+
+/* 지뽀팬츠 전용 사이즈 (XS~JL 확장판) */
+const SIZE_GUIDE_ZIPPO = {
+  rows: [
+    { size: 'XS', age: '2-3세', height: '85-92cm', weight: '약 12-14kg' },
+    { size: 'S',  age: '3-4세', height: '92-100cm', weight: '약 14-16kg' },
+    { size: 'M',  age: '4-5세', height: '100-108cm', weight: '약 16-18kg' },
+    { size: 'L',  age: '5-6세', height: '108-116cm', weight: '약 18-20kg' },
+    { size: 'XL', age: '6-7세', height: '116-122cm', weight: '약 20-23kg' },
+    { size: 'JS', age: '8-9세', height: '128-134cm', weight: '약 28-33kg' },
+    { size: 'JM', age: '9-10세', height: '134-140cm', weight: '약 32-37kg' },
+    { size: 'JL', age: '10-11세', height: '140-150cm', weight: '약 35-42kg' },
+  ],
+  models: '모델: 크리스(102cm/16kg/S착용), 나율이(98cm/14kg/S착용)'
+};
+
+/* 바라클라바·워머·알록비니 전용 사이즈 (2호/3호) */
+const SIZE_GUIDE_HONUM = {
+  rows: [
+    { size: '2호(kids)',   age: '3-7세',  height: '90-120cm',  weight: '' },
+    { size: '3호(junior)', age: '8-12세', height: '120-150cm', weight: '' },
+  ],
+  models: ''
+};
 const PRODUCTS = [
   {
     id: 'backpack', name: '백팩', cat: '가방/잡화',
@@ -1423,7 +1592,8 @@ const PRODUCTS = [
     id: 'balaclava', name: '바라클라바', cat: '가방/잡화',
     price: 16000,
     points: ['목·귀·머리 한번에 따뜻하게, 활동성 최고', '5가지 컬러로 코디 맞춤 가능'],
-    colors: ['옥색', '퍼플', '크림베', '버건디', '네이비'], sizes: [],
+    colors: ['옥색', '퍼플', '크림베', '버건디', '네이비'], sizes: ['2호(kids)', '3호(junior)'],
+    sizeGuide: 'hoNum',
     note: '※ 페이백 미적용 상품',
     images: ['1p-Ds3aQlxjsjsiwCyhZDSO9BwOr1bhKr','1BeXCL7Rlmthp2R6YNU4zK7bF_BLumqDL','1ZnD8c84kX7imDq4FjeOrV3ARxvj_5nSL','168OpoxbEjSk_9c0iwdybDnOr4YYVVhvA','1GoF1hy_YPHFGamr4T9F7Glj9A2C_MYAj'].map(D)
   },
@@ -1431,7 +1601,8 @@ const PRODUCTS = [
     id: 'warmer', name: '고유워머', cat: '가방/잡화',
     price: 19200,
     points: ['손목부터 팔꿈치까지 커버하는 프리미엄 레그워머', '5가지 컬러, 옷 위에 바로 레이어링 가능'],
-    colors: ['옥색', '퍼플', '크림베', '버건디', '네이비'], sizes: [],
+    colors: ['옥색', '퍼플', '크림베', '버건디', '네이비'], sizes: ['2호(kids)', '3호(junior)'],
+    sizeGuide: 'hoNum',
     note: '※ 페이백 미적용 상품',
     images: ['https://i.ibb.co/nh62RL2/Image-001.jpg','https://i.ibb.co/2YWMHFFV/Image-003.jpg','https://i.ibb.co/xp4cCpM/Image-004.jpg','https://i.ibb.co/HLLGPY4M/Image-009.jpg','https://i.ibb.co/mFvSsDHh/Image-013.jpg']
   },
@@ -1439,28 +1610,32 @@ const PRODUCTS = [
     id: 'cartoon-pants', name: '카툰팬츠', cat: '하의',
     price: 35200,
     points: ['귀여운 카툰 프린트, 매일 입어도 안 질리는 핏', '퍼플·크림 두 가지 컬러'],
-    colors: ['퍼플', '크림'], sizes: ['XS', 'S', 'M', 'L', 'JL'],
+    colors: ['퍼플', '크림'], sizes: ['XS', 'S', 'M', 'L', 'XL', 'JS', 'JM', 'JL'],
+    sizeGuide: 'zippo',
     images: ['1zOBrvJS5A5lefpsmPBIOYx1X_N7dVeoM','1hRq7frOeZ_zjph6nieH8kbc4jpHbKct3','1KO7oZTvkSwluXr-Az8PDPDJga0mogtHS','11FYWLm5txAve9lUG8uYYnyJYqjLlQUj8','10_p-l19h-ebWCKbfFxOATfxgYuHgXY4p'].map(D)
   },
   {
     id: 'curly-pants', name: '꼬불팬츠', cat: '하의',
     price: 27200,
     points: ['꼬불꼬불 텍스처가 포인트인 겨울 팬츠', '옐로우·퍼플 경쾌한 컬러 구성'],
-    colors: ['옐로우', '퍼플'], sizes: ['XS', 'S', 'M', 'L', 'JL'],
+    colors: ['옐로우', '퍼플'], sizes: ['XS', 'S', 'M', 'L', 'XL', 'JS', 'JM', 'JL'],
+    sizeGuide: 'zippo',
     images: ['1QUTTZMcT_RBN2mrJXLSIh_Pv7HSKbeBw','1VVQ2S9y7n-yDgg3FoL5dm7Yjqqh75Fpo','1NUIqUlI9JpowQnBk3_5L_G7N3l4K24x_','1JACgpgsDLQyKndtRDqL05WjEv_jXrnUT','1EDU025f7iwWms-3rQXV9hmy0PWqFuOFP'].map(D)
   },
   {
     id: 'dongri-jacket', name: '동그리자켓', cat: '아우터',
     price: 80000,
     points: ['둥글둥글 귀여운 실루엣의 겨울 자켓, 보온성 탁월', '네이비·크림 클래식 컬러'],
-    colors: ['네이비', '크림'], sizes: ['XS', 'S', 'M', 'L', 'JL'],
+    colors: ['네이비', '크림'], sizes: ['XS', 'S', 'M', 'L', 'XL', 'JS', 'JM', 'JL'],
+    sizeGuide: 'zippo',
     images: ['1rYCI2q-pDJrrf2dZTC-75vmKKjfu3-2G','16MHKT0u93pc5W-GDrAxyKeYfXJAhsO8m','1BCVevzGijt6MnrPHhGKvihcz4LALuVHS','1mnqd2rhKNryGC3usvVCLd-FP0bzyCRfP','1mxt0PAkk4rZGIDhTf7FRYAO9XtEWGZEg'].map(D)
   },
   {
     id: 'ddasu-jumper', name: '따수워점퍼', cat: '아우터',
     price: 99200,
     points: ['이름처럼 따뜻하고 포근한 겨울 대표 아이템', '오렌지·블루 생동감 넘치는 컬러'],
-    colors: ['오렌지', '블루'], sizes: ['XS', 'S', 'M', 'L', 'JL'],
+    colors: ['오렌지', '블루'], sizes: ['XS', 'S', 'M', 'L', 'XL', 'JS', 'JM', 'JL'],
+    sizeGuide: 'zippo',
     images: ['1u3t6MaSslpELxNwLIOHHj7CbS6nrWWCz','17n_X5qCcyzi1H95MxqSvRWig0-bFpLrJ','145sjnXl6ig121oMnFRp3LTx_kcKYEaYF','1MXvWw34QX5-Gah6pDlMOA0rfDgrXPAQg','1F_Q1G1-0WfPmm5F-Y7YfQ81of7Htsm8G'].map(D)
   },
   {
@@ -1481,7 +1656,8 @@ const PRODUCTS = [
     id: 'beanie', name: '알록비니', cat: '가방/잡화',
     price: 24000,
     points: ['알록달록 포인트 비니, 겨울 코디의 완성', '달록민트·알록레드, 2호·3호 사이즈'],
-    colors: ['달록민트', '알록레드'], sizes: ['2호', '3호'],
+    colors: ['달록민트', '알록레드'], sizes: ['2호(kids)', '3호(junior)'],
+    sizeGuide: 'hoNum',
     images: ['1hee6vFvdA7Q1mGcZFTI02JnYk5ptxOOF','1Q7YC0Tl6GULUmOGsdZD-hBocaAI3XjD9','1txTHkzSDkT7LvAIZ5AAzMxGc7oFDDFlu','10ARrTjgIjWKEoWRiXcWERB9m3wVuDF7w','1tRtzE8iXxscLurLEs073DTHwBVML3PLH'].map(D)
   },
   {
@@ -1495,7 +1671,8 @@ const PRODUCTS = [
     id: 'aurora-pants', name: '오로라팬츠', cat: '하의',
     price: 48000,
     points: ['오로라처럼 은은하게 빛나는 반짝 팬츠', '민트·퍼플 몽환적인 컬러'],
-    colors: ['민트', '퍼플'], sizes: ['XS', 'S', 'M', 'L', 'JL'],
+    colors: ['민트', '퍼플'], sizes: ['XS', 'S', 'M', 'L', 'XL', 'JS', 'JM', 'JL'],
+    sizeGuide: 'zippo',
     images: ['1dWxPYuyVwVA_FRw1IX3_hzEb0Y2cNWNy','1fVxtKXrb-ve_vfwoNUuNfuhhDT9uWNrk','1VzYRLqtyBKa0RkymdfS8HWiGIKNELEYJ','11XWbPTAQ6_vGnOnP849QN8q-m6QDS_D-','1MBAkSkUU89Sb5lzgAbUr32VPST5qrX06'].map(D)
   },
   {
@@ -1513,10 +1690,11 @@ const PRODUCTS = [
     images: ['1wcHO6WO4BCqvmgyV0ufNa-pratp7vyjS','1sRV00piKO4ZVXlVoyFDgOeVo0pbZrX0B','1oJ7WrzG7ZgTMT25-N3SMO44CeXDQnugt','12rQHIxAqyveX0b9ivCbBBkf2hRhYvONf','1yTV_P5aQoZYNv-bakkoit1zfrQp9sbem'].map(D)
   },
   {
-    id: 'jippy-pants', name: '지쁘팬츠', cat: '하의',
+    id: 'jippy-pants', name: '지뽀팬츠', cat: '하의',
     price: 35200,
     points: ['지퍼 포인트로 활동성과 스타일 둘 다 잡은 팬츠', '옥색·퍼플 코디하기 쉬운 컬러'],
-    colors: ['옥색', '퍼플'], sizes: ['XS', 'S', 'M', 'L', 'JL'],
+    colors: ['옥색', '퍼플'], sizes: ['XS', 'S', 'M', 'L', 'XL', 'JS', 'JM', 'JL'],
+    sizeGuide: 'zippo',
     images: ['1Himgm_kE4hyzVs01jprgPfFDGQOpdbTB','1eXc8z97ILBGQ_opt-TgzU4h6iekWbw2d','1qTm__2GBAt8NKR1rqNtt2wzGBFKEEgMr','1SsvVpIlwJf7Zzo77KE77yvTWDs_rLYGb','1SsvVpIlwJf7Zzo77KE77yvTWDs_rLYGb'].map(D)
   },
   {
@@ -1629,6 +1807,40 @@ function slideCarousel(id, dir) {
   }
 }
 
+/* ─── SIZE GUIDE BUILDER ─── */
+function buildSizeGuide(p) {
+  const guide = p.sizeGuide === 'zippo' ? SIZE_GUIDE_ZIPPO
+              : p.sizeGuide === 'hoNum' ? SIZE_GUIDE_HONUM
+              : SIZE_GUIDE_DEFAULT;
+  const rows = guide.rows.filter(r => p.sizes.includes(r.size));
+  if (rows.length === 0) return '';
+  const tableRows = rows.map(r =>
+    `<tr><td><strong>${r.size}</strong></td><td>${r.age}</td><td>${r.height}</td><td>${r.weight}</td></tr>`
+  ).join('');
+  const panelId = `sg-${p.id}`;
+  return `
+    <button class="size-guide-toggle" onclick="toggleSizeGuide('${panelId}', this)">📏 사이즈 가이드 ▼</button>
+    <div class="size-guide-panel" id="${panelId}">
+      <table class="size-guide-table">
+        <thead><tr><th>사이즈</th><th>나이</th><th>키</th><th>몸무게</th></tr></thead>
+        <tbody>${tableRows}</tbody>
+      </table>
+      <p class="size-guide-model">👶 ${guide.models}</p>
+    </div>`;
+}
+
+function toggleSizeGuide(panelId, btn) {
+  const panel = document.getElementById(panelId);
+  const isOpen = panel.classList.toggle('open');
+  btn.innerHTML = `📏 사이즈 가이드 ${isOpen ? '▲' : '▼'}`;
+}
+
+function toggleNotice(header) {
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+}
+
 /* ─── RENDER PRODUCTS ─── */
 function renderProducts() {
   const filtered = currentCat === '전체' ? PRODUCTS : PRODUCTS.filter(p => p.cat === currentCat);
@@ -1672,6 +1884,7 @@ function renderProducts() {
               ${sizeOpts}
             </select>
           </div>
+          ${buildSizeGuide(p)}
           ` : ''}
         </div>
 
@@ -1882,7 +2095,7 @@ function gotoKakao() {
 
   const msg = `[고유 25 F/W 공구 주문]\n\n${items}\n\n총 합계: ${total.toLocaleString()}원\n\n───────────────\n이름:\n연락처:\n배송지:\n인스타 아이디(페이백용):`;
 
-  const kakaoUrl = 'https://open.kakao.com/o/s85dtRKi';
+  const kakaoUrl = 'https://open.kakao.com/o/gP4zuHUi';
 
   // 복사 후 팝업 띄우기 (클립보드 API가 click 이벤트 밖에서 안 되는 경우 대비)
   function doOpen() {
