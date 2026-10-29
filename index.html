@@ -1101,6 +1101,21 @@ textarea.form-input {
   .product-price-block { text-align: left; }
 }
 
+/* hero 카카오 링크 */
+.hero-kakao-link {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 18px;
+  background: #FEE500;
+  color: #3C1E1E;
+  border-radius: 20px;
+  font-size: .85rem;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.hero-kakao-link:hover { background: #f5da00; }
+
 /* 사이즈 가이드 버튼 */
 .size-guide-btn {
   margin-top: 14px;
@@ -1137,10 +1152,11 @@ textarea.form-input {
 .size-modal {
   background: var(--card);
   border-radius: var(--r);
-  padding: 24px 20px;
-  max-width: 340px;
-  width: 90%;
+  padding: 28px 24px;
+  max-width: 380px;
+  width: 92%;
   position: relative;
+  box-shadow: 0 8px 40px rgba(0,0,0,.25);
 }
 .size-modal-close {
   position: absolute;
@@ -1162,15 +1178,17 @@ textarea.form-input {
 }
 .size-table th, .size-table td {
   border: 1px solid var(--border);
-  padding: 7px 10px;
+  padding: 10px 14px;
   text-align: center;
+  font-size: .95rem;
 }
 .size-table th {
-  background: var(--bg2);
-  font-weight: 600;
-  color: var(--fg);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
 }
-.size-table td { color: var(--fg2); }
+.size-table tbody tr:nth-child(even) td { background: var(--bg2); }
+.size-table td { color: var(--fg); font-weight: 500; }
 
 /* 장바구니 계속쇼핑 버튼 */
 .continue-shopping-btn {
@@ -1233,7 +1251,7 @@ textarea.form-input {
     <span class="hero-badge">⏰ 한정 공구</span>
     <h1>하주맘✕고유 25 F/W 아동복<br><em>특가 공구</em></h1>
     <p class="hero-desc">무료배송 × 5,000원 페이백<br>하주맘이 직접 고른 고유 겨울 아동복 21종</p>
-    <p class="hero-subdesc">이 외 찾으시는 고유 제품 문의는 카카오톡 주세요<br>똑같이 페이백 적용해드릴 수 있습니다 😊</p>
+    <p class="hero-subdesc">이 외 찾으시는 고유 제품 문의는 카카오톡 주세요<br>똑같이 페이백 적용해드릴 수 있습니다 😊<br><a href="https://open.kakao.com/o/s85dtRKi" target="_blank" class="hero-kakao-link">💬 카카오 오픈채팅 바로가기</a></p>
     <div class="benefit-row">
       <div class="benefit-chip"><span class="icon">🚚</span> 무료배송</div>
       <div class="benefit-chip"><span class="icon">💰</span> 5,000원 페이백</div>
@@ -1429,7 +1447,7 @@ const PRODUCTS = [
     price: 27200,
     points: ['꼬불꼬불 텍스처가 포인트인 겨울 팬츠', '옐로우·퍼플 경쾌한 컬러 구성'],
     colors: ['옐로우', '퍼플'], sizes: ['XS', 'S', 'M', 'L', 'JL'],
-    images: []
+    images: ['1QUTTZMcT_RBN2mrJXLSIh_Pv7HSKbeBw','1VVQ2S9y7n-yDgg3FoL5dm7Yjqqh75Fpo','1NUIqUlI9JpowQnBk3_5L_G7N3l4K24x_','1JACgpgsDLQyKndtRDqL05WjEv_jXrnUT','1EDU025f7iwWms-3rQXV9hmy0PWqFuOFP'].map(D)
   },
   {
     id: 'dongri-jacket', name: '동그리자켓', cat: '아우터',
@@ -1513,35 +1531,35 @@ const PRODUCTS = [
     price: 35200,
     points: ['포근한 폴라 넥으로 목까지 따뜻하게, 겨울 필수템', '진곤·크림·옐로우 세 가지 컬러'],
     colors: ['진곤', '크림', '옐로우'], sizes: ['XS', 'S', 'M', 'L', 'JL'],
-    images: []
+    images: ['1tQW23-Gxp4FHPLqLanK9Yho1ZAMaqFPk','1XDtuXZmUq6O66i4-lm_-kjafgqRQpth9','1BNjdBJ1CAZiJftj0x2-xu4djAXZnimzf','1ZJf-4zA1yru8WODEqrMcmPU8QBozIa_q','1lNWiBX-j67eyIfzZi5J3rzpf3E28gJ02'].map(D)
   },
   {
     id: 'polpol-set', name: '폴폴세트', cat: '상의',
     price: 35200,
     points: ['폴라티+팬츠 세트, 매일 아침 코디 고민 해결', '무지+멜란 7가지 색상, 엄마 사이즈도 있어요'],
     colors: ['무지레드', '무지핫민트', '무지네이비', '무지퍼플', '멜란차콜', '멜란오트밀', '멜란연민트'], sizes: ['XS', 'S', 'M', 'L', 'JL', '엄마'],
-    images: []
+    images: ['1mXS31l1c9ooMcDtnHOsLBYf3Y7wbKj_y','1ewWsvZYUqQzc2TUuax3awIfPHdnX9HJu','1yXZvh6zIYNPhN616Ft6DQ7fWtJLQg_18','1pW1nAvhruyIHtXtl3lNqR3BUQQ1rwoJO','18kl3H0vj_jHbYjA22ZCVPi8nUq0u4pGe','1-eqtTyj2fo62jusFoX1q6GcK8TOCpyPx','10cOBMaUQaSTOJk9vITNnwfyLRUHHULJe'].map(D)
   },
   {
     id: 'limited-hood-anorak', name: '한정판후드아노락', cat: '아우터',
     price: 49600,
     points: ['한정 수량 후드 아노락, 나오면 완판되는 고유 시그니처', '연두곤·와인청록 희귀한 컬러 조합'],
     colors: ['연두곤', '와인청록'], sizes: ['XS', 'S', 'M', 'L', 'JL'],
-    images: []
+    images: ['1AT-vV84jPssGQHm4WXixkHvSxqjHLycy','1j-2A_fmAEVqIH9dxLjGZvQCAtI_hkZ8-','1ZGQfppOZkAXGrzOmGLnewkdK8M1dOiKZ','1v4ewYwwCThiS2QHdUy2j5LXb0R60pLWD','1-R1LSYpaWg5GY_sS-68AkMJcGpPLHxhs'].map(D)
   },
   {
     id: 'hotpack-vest', name: '핫팩베스트', cat: '아우터',
     price: 60800,
     points: ['핫팩 포켓이 달린 기능성 겨울 조끼, 체온 유지 최고', '레드·그린 비비드 포인트 컬러'],
     colors: ['레드', '그린'], sizes: ['XS', 'S', 'M', 'L', 'JL'],
-    images: []
+    images: ['1kJJSWp70KpGterewYLftjHCKNxc0dEEc','1k20luA5SVYtPWZfqN9r0E6WiA8GBR5Uh','1DdmHe4SWBgT9Vw0MdKA2xvGQABVN_LWS','1PspsOQEOkq35WJYJ1PRbLhna7xdE2Kqk','1BXfSS5bJSNYsIt3w8OifJe9jMK8lyjtN'].map(D)
   },
   {
     id: 'hood-combo', name: '후드콤보티', cat: '상의',
     price: 38400,
     points: ['후드+콤보 레이어드 룩을 한 벌로, 실용적인 겨울 상의', '핑크·그린 트렌디한 컬러'],
     colors: ['핑크', '그린'], sizes: ['XS', 'S', 'M', 'L', 'JL'],
-    images: []
+    images: ['12vgyoAsoJU9VLEQcNVjfru01oFZYPcrZ','1hvhHKwTwuVGMhzdN0mlfDlcuorz1FD_V','1kSjTIGN7FKmUmeMTKCtypIjrMvwifxBs','1jISJjzj5e4MWc69TjZJlKmjfFkR18C9X','1q9SqNL458FtIUQLnp65q4epyEaOZC3uK'].map(D)
   }
 ];
 
@@ -1864,19 +1882,45 @@ function gotoKakao() {
 
   const msg = `[고유 25 F/W 공구 주문]\n\n${items}\n\n총 합계: ${total.toLocaleString()}원\n\n───────────────\n이름:\n연락처:\n배송지:\n인스타 아이디(페이백용):`;
 
-  // 클립보드에 복사 후 카카오톡 오픈채팅 이동
   const kakaoUrl = 'https://open.kakao.com/o/s85dtRKi';
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(msg).then(() => {
-      showToast('주문 내역 복사됐어요! 카카오톡에서 붙여넣기 해주세요 📋');
-      setTimeout(() => { window.open(kakaoUrl, '_blank'); }, 800);
-    }).catch(() => {
-      window.open(kakaoUrl, '_blank');
-    });
-  } else {
+
+  // 복사 후 팝업 띄우기 (클립보드 API가 click 이벤트 밖에서 안 되는 경우 대비)
+  function doOpen() {
     window.open(kakaoUrl, '_blank');
   }
+
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(msg).then(() => {
+        showToast('📋 주문내역 복사 완료! 카톡에서 붙여넣기 해주세요');
+        doOpen();
+      }).catch(() => {
+        fallbackCopyKakao(msg, doOpen);
+      });
+    } else {
+      fallbackCopyKakao(msg, doOpen);
+    }
+  } catch(e) {
+    doOpen();
+  }
   closeCart();
+}
+
+function fallbackCopyKakao(msg, cb) {
+  const el = document.createElement('textarea');
+  el.value = msg;
+  el.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+  document.body.appendChild(el);
+  el.focus();
+  el.select();
+  try {
+    document.execCommand('copy');
+    showToast('📋 주문내역 복사 완료! 카톡에서 붙여넣기 해주세요');
+  } catch(e) {
+    showToast('카카오톡 오픈채팅으로 이동합니다');
+  }
+  document.body.removeChild(el);
+  if (cb) cb();
 }
 
 /* ─── 사이즈표 모달 ─── */
