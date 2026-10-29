@@ -1100,17 +1100,125 @@ textarea.form-input {
   .product-header { flex-direction: column; gap: 6px; }
   .product-price-block { text-align: left; }
 }
+
+/* 사이즈 가이드 버튼 */
+.size-guide-btn {
+  margin-top: 14px;
+  padding: 9px 20px;
+  background: rgba(255,255,255,.18);
+  border: 1.5px solid rgba(255,255,255,.5);
+  border-radius: 20px;
+  color: #fff;
+  font-size: .85rem;
+  cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.size-guide-btn:hover { background: rgba(255,255,255,.28); }
+
+/* hero subdesc */
+.hero-subdesc {
+  font-size: .82rem;
+  color: var(--fg2);
+  margin-top: 6px;
+  line-height: 1.6;
+}
+
+/* 사이즈표 모달 */
+.size-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+.size-modal-overlay.open { display: flex; }
+.size-modal {
+  background: var(--card);
+  border-radius: var(--r);
+  padding: 24px 20px;
+  max-width: 340px;
+  width: 90%;
+  position: relative;
+}
+.size-modal-close {
+  position: absolute;
+  top: 12px; right: 14px;
+  background: none; border: none;
+  font-size: 1.2rem; cursor: pointer;
+  color: var(--fg2);
+}
+.size-modal h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1rem;
+  margin-bottom: 14px;
+  color: var(--fg);
+}
+.size-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .85rem;
+}
+.size-table th, .size-table td {
+  border: 1px solid var(--border);
+  padding: 7px 10px;
+  text-align: center;
+}
+.size-table th {
+  background: var(--bg2);
+  font-weight: 600;
+  color: var(--fg);
+}
+.size-table td { color: var(--fg2); }
+
+/* 장바구니 계속쇼핑 버튼 */
+.continue-shopping-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--bg2);
+  border: none;
+  border-radius: var(--r-sm);
+  font-size: .9rem;
+  color: var(--fg2);
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+.continue-shopping-btn:hover { background: var(--soft); }
 </style>
 
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
+<!-- 사이즈표 모달 -->
+<div class="size-modal-overlay" id="size-modal-overlay" onclick="closeSizeModal(event)">
+  <div class="size-modal">
+    <button class="size-modal-close" onclick="closeSizeModal()">✕</button>
+    <h3>📏 고유 사이즈 가이드</h3>
+    <table class="size-table">
+      <thead>
+        <tr><th>size</th><th>키(cm)</th><th>몸무게(kg)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>XS</td><td>85-90</td><td>10-15</td></tr>
+        <tr><td>S</td><td>95-100</td><td>15-17</td></tr>
+        <tr><td>M</td><td>100-105</td><td>17-20</td></tr>
+        <tr><td>L</td><td>105-110</td><td>20-22</td></tr>
+        <tr><td>XL</td><td>110-115</td><td>22-25</td></tr>
+        <tr><td>JS</td><td>115-125</td><td>25-30</td></tr>
+        <tr><td>JM</td><td>125-135</td><td>30-35</td></tr>
+        <tr><td>JL</td><td>135-145</td><td>35-40</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <!-- HEADER -->
 <header class="site-header">
   <div class="header-inner">
     <div class="brand">
-      <span class="brand-name">고유</span>
-      <span class="brand-sub">25 F/W 아동복 공구</span>
+      <span class="brand-name">하주맘✕고유</span>
+      <span class="brand-sub">25 F/W 아동복 특가 공구</span>
     </div>
     <button class="cart-btn" onclick="openCart()" id="cart-btn">
       🛍️ 장바구니
@@ -1123,14 +1231,16 @@ textarea.form-input {
 <div class="hero">
   <div class="hero-inner">
     <span class="hero-badge">⏰ 한정 공구</span>
-    <h1>고유 25 F/W 아동복<br><em>특가 공구</em></h1>
-    <p class="hero-desc">소비자가 1.6배 가격 × 무료배송 × 5,000원 페이백<br>하주맘이 직접 고른 고유 겨울 아동복 21종</p>
+    <h1>하주맘✕고유 25 F/W 아동복<br><em>특가 공구</em></h1>
+    <p class="hero-desc">무료배송 × 5,000원 페이백<br>하주맘이 직접 고른 고유 겨울 아동복 21종</p>
+    <p class="hero-subdesc">이 외 찾으시는 고유 제품 문의는 카카오톡 주세요<br>똑같이 페이백 적용해드릴 수 있습니다 😊</p>
     <div class="benefit-row">
       <div class="benefit-chip"><span class="icon">🚚</span> 무료배송</div>
       <div class="benefit-chip"><span class="icon">💰</span> 5,000원 페이백</div>
       <div class="benefit-chip"><span class="icon">💳</span> 계좌이체 결제</div>
       <div class="benefit-chip"><span class="icon">✅</span> 하주맘 검증템</div>
     </div>
+    <button class="size-guide-btn" onclick="openSizeModal()">📏 사이즈 가이드 보기</button>
   </div>
 </div>
 
@@ -1273,8 +1383,9 @@ textarea.form-input {
       <span class="cart-total-price" id="cart-total">0원</span>
     </div>
     <p class="cart-peakback-note">✅ 무료배송 + 입금 완료 댓글 시 5,000원 페이백</p>
-    <button class="order-btn" id="goto-order-btn" onclick="gotoOrder()" disabled>
-      주문서 작성하기
+    <button class="continue-shopping-btn" onclick="closeCart()">← 계속 쇼핑하기</button>
+    <button class="order-btn" id="goto-order-btn" onclick="gotoKakao()" disabled>
+      카카오톡으로 주문하기 💬
     </button>
   </div>
 </div>
@@ -1737,6 +1848,45 @@ function fallbackCopy(text) {
   el.select();
   try { document.execCommand('copy'); showToast('계좌번호 복사됐어요!'); } catch(e) {}
   document.body.removeChild(el);
+}
+
+/* ─── 카카오톡 주문 연동 ─── */
+function gotoKakao() {
+  if (cart.length === 0) return;
+  const total = cart.reduce((s, c) => s + c.price * c.qty, 0);
+  const items = cart.map(c => {
+    let line = `• ${c.name}`;
+    if (c.color) line += ` / ${c.color}`;
+    if (c.size) line += ` / ${c.size}`;
+    line += ` × ${c.qty}개 = ${(c.price * c.qty).toLocaleString()}원`;
+    return line;
+  }).join('\n');
+
+  const msg = `[고유 25 F/W 공구 주문]\n\n${items}\n\n총 합계: ${total.toLocaleString()}원\n\n───────────────\n이름:\n연락처:\n배송지:\n인스타 아이디(페이백용):`;
+
+  // 클립보드에 복사 후 카카오톡 오픈채팅 이동
+  const kakaoUrl = 'https://open.kakao.com/o/s85dtRKi';
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(msg).then(() => {
+      showToast('주문 내역 복사됐어요! 카카오톡에서 붙여넣기 해주세요 📋');
+      setTimeout(() => { window.open(kakaoUrl, '_blank'); }, 800);
+    }).catch(() => {
+      window.open(kakaoUrl, '_blank');
+    });
+  } else {
+    window.open(kakaoUrl, '_blank');
+  }
+  closeCart();
+}
+
+/* ─── 사이즈표 모달 ─── */
+function openSizeModal() {
+  document.getElementById('size-modal-overlay').classList.add('open');
+}
+function closeSizeModal(e) {
+  if (!e || e.target === document.getElementById('size-modal-overlay') || !e.target) {
+    document.getElementById('size-modal-overlay').classList.remove('open');
+  }
 }
 
 /* ─── TOAST ─── */
